@@ -1,0 +1,176 @@
+\documentclass[journal=jacsat]{achemso}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Includes various packages for extra functionality
+%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{modiagram}	% Molecular orbital diagrams
+
+\usepackage{mathtools}		% Make pretty formulas
+\usepackage{fixltx2e}		% Allow subscripts
+\usepackage{graphicx}		% Improved graphics
+\usepackage{bm} 			% Bold math symbols 
+\usepackage{txfonts} 		% Allow times-like fonts in equations
+\usepackage{mathpazo} 		% Palatino fonts for equations
+\usepackage{dcolumn}		% Align tabular columns on decimal points
+\usepackage{footmisc}		% Foot note options
+\usepackage{mathrsfs}		% RSFS fonts in equations
+\usepackage{mhchem}
+\usepackage{braket}
+\usepackage{commath}
+\usepackage[T1]{fontenc}
+\usepackage{currvita}
+\numberwithin{equation}{section}
+\usepackage{simplewick}
+
+%\usepackage[polish]{babel}	% Select language standard
+%\usepackage{natbib}		% Support for various natbib BibTex styles
+
+
+% This is for use of Times New Roman
+\usepackage[T1]{fontenc}
+\usepackage{times}
+
+\newcommand{\T}[4]{T^{#1 #2}_{#3 #4}}
+\renewcommand{\O}[1]{$\mathcal{O}\left( #1 \right)$}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\baselinestretch}{2} % This is for the use of double space
+%\setkeys{acs}{articletitle = true} % Include title in bibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Start document
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Fabijan Pavo\v{s}evi\'{c}}
+\email{fabijan@vt.edu}
+\affiliation[Virginia Tech]
+       {Department of Chemistry, Virginia Tech, Blacksburg, VA}
+\title{Explicitly correlated methods}
+\date{September 6, 2013}
+
+\SectionNumbersOn
+\begin{document}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%
+% Paper
+%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\tableofcontents
+\newpage
+\section{Rayleigh-Schr\"{o}dinger Perturbation theory}
+The exact Schr\"{o}dinger equation of the form
+\begin{align}
+\label{eq:schrodinger_eq}
+\hat{H}\ket{\Psi_{i}}=E_{i}\ket{\Psi_{i}}
+\end{align}
+is too complex to be solved exactly. One way to find an approximate solution to Schr\"{o}dinger equation is via perturbation theory in which we divide Hamiltonian operator into zeroth- and first-order contributions as:
+\begin{align}
+\hat{H}=\hat{H}^{(0)} + \lambda\hat{H}^{(1)}
+\end{align}
+where $ \hat{H}^{(1)}$ represents a small perturbation to the system while for the  $\hat{H}^{(0)}$ we have and exact solution. Furthermore, we can expand energy and wavefunction as:
+\begin{align}
+E_{i} &= E_{i}^{(0)} + \lambda E_{i}^{(1)} + \lambda^{2} E_{i}^{(2)} + ...\\
+\ket{\Psi_{i}} &= \ket{\Psi_{i}^{(0)}} + \lambda \ket{\Psi_{i}^{(1)}} + \lambda^{2} \ket{\Psi_{i}^{(2)}} + ...
+\end{align}
+Insertion of such defined Hamiltonian, wavefunction and energy into Eq. \ref{eq:schrodinger_eq}, we obtain
+\begin{align}
+(\hat{H}^{(0)} + \lambda\hat{H}^{(1)})(\ket{\Psi_{i}^{(0)}} + \lambda \ket{\Psi_{i}^{(1)}} + \lambda^{2} \ket{\Psi_{i}^{(2)}} + ...)=\\
+(E_{i}^{(0)} + \lambda E_{i}^{(1)} + \lambda^{2} E_{i}^{(2)} + ...)
+(\ket{\Psi_{i}^{(0)}} + \lambda \ket{\Psi_{i}^{(1)}} + \lambda^{2} \ket{\Psi_{i}^{(2)}} + ...)
+\end{align}
+Collecting the terms with the same order of $\lambda$ gives:
+ \begin{align}
+\lambda^{0}:& \hat{H}^{(0)}\ket{\Psi_{i}^{(0)}}=E_{i}^{(0)}\ket{\Psi_{i}^{(0)}}\\
+\lambda^{1}:&  \hat{H}^{(0)}\ket{\Psi_{i}^{(1)}} + \hat{H}^{(1)}\ket{\Psi_{i}^{(0)}}=E_{i}^{(0)}\ket{\Psi_{i}^{(1)}}+E_{i}^{(1)}\ket{\Psi_{i}^{(0)}}\\
+\lambda^{n}:&  \hat{H}^{(0)}\ket{\Psi_{i}^{(n)}} + \hat{H}^{(1)}\ket{\Psi_{i}^{(n-1)}}=\sum_{k=0}^{n}E_{i}^{(k)}\ket{\Psi_{i}^{(n-k)}}
+\end{align}
+
+In order to obtain $n-th$ order energy expression, we can project $\lambda^{n}$ equation on the right hand side by $\bra{\Psi_{i}^{(0)}}$. After doing some straight forward algebra, we arrive at the first- and second order energy correction:
+ \begin{align}
+E_{i}^{(1)}&=\bra{\Psi_{i}^{(0)}}\hat{H}^{(1)}\ket{\Psi_{i}^{(0)}}\\
+E_{i}^{(2)}&=\bra{\Psi_{i}^{(0)}}\hat{H}^{(1)}\ket{\Psi_{i}^{(1)}}
+\end{align}
+
+Finally, in this section we define second-order Hylleraas functional as:
+ \begin{align}
+H^{(2)}=2Re\bra{\Psi_{i}^{(0)}}\hat{H}^{(1)}-E^{(1)}\ket{\Psi_{i}^{(1)}}+\bra{\Psi_{i}^{(1)}}\hat{H}^{(0)}-E^{(0)}\ket{\Psi_{i}^{(1)}}
+\end{align} 
+
+\section{Second Quantization}
+We define a creation operator by its action on a Slater determinant:
+ \begin{align}
+a_{p}^{\dagger}\ket{\phi_{q}...\phi_{r}}=\ket{\phi_{p}\phi_{q}...\phi_{r}}
+\end{align} 
+In the same way, we define annihilation operator: 
+\begin{align}
+a_{p}\ket{\phi_{p}\phi_{q}...\phi_{r}}=\ket{\phi_{q}...\phi_{r}}
+\end{align} 
+Slater determinant can be written as a chain of creation operators acting on the true (genuine) vacuum state ($\ket{vac}$):
+\begin{align}
+a_{p}^{\dagger}a_{q}^{\dagger}...a_{r}^{\dagger}\ket{vac}=\ket{\phi_{p}\phi_{q}...\phi_{r}}.
+\end{align} 
+Action of the annihilation operator onto vacuum state is:
+\begin{align}
+a_{p}\ket{vac}=0.
+\end{align} 
+The creation and annihilation operators obey anti commutation rules which can be derived from:
+\begin{align}
+a_{q}^{\dagger}a_{p}^{\dagger}\ket{vac}=\ket{\phi_{q}\phi_{p}}=-\ket{\phi_{p}\phi_{q}}=-a_{p}^{\dagger}a_{q}^{\dagger}\ket{vac}
+\end{align} 
+giving the firs anti commutation relation:
+\begin{align}
+[a_{q}^{\dagger},a_{p}^{\dagger}]_{+}=0
+\end{align} 
+Analogous relation can be obtained by taking complex conjugated for of the previous anti commutation relation giving:
+\begin{align}
+[a_{q},a_{p}]_{+}=0
+\end{align} 
+The final anti commutation relation may be obtained by considering:
+\begin{align}
+(a_{p}a_{p}^{\dagger}+a_{p}^{\dagger}a_{p})\ket{\phi_{q}...\phi_{r}}=a_{p}a_{p}^{\dagger}\ket{\phi_{q}...\phi_{r}}=\ket{\phi_{q}...\phi_{r}}
+\end{align} 
+giving
+\begin{align}
+a_{p}a_{p}^{\dagger}+a_{p}^{\dagger}a_{p}=1
+\end{align} 
+and 
+\begin{align}
+&(a_{p}a_{q}^{\dagger}+a_{q}^{\dagger}a_{p})\ket{\phi_{p}...\phi_{r}}=a_{p}a_{q}^{\dagger}\ket{\phi_{p}...\phi_{r}}+a_{q}^{\dagger}a_{p}\ket{\phi_{p}...\phi_{r}}=\\
+&=a_{p}\ket{\phi_{q}\phi_{p}...\phi_{r}}+a_{q}^{\dagger}\ket{...\phi_{r}}=-\ket{\phi_{q}...\phi_{r}}+\ket{\phi_{q}...\phi_{r}}=0
+\end{align} 
+giving the 
+\begin{align}
+a_{p}a_{q}^{\dagger}+a_{q}^{\dagger}a_{p}=0
+\end{align} 
+The two expressions can be written using the one expression as:
+\begin{align}
+[a_{p},a_{q}^{\dagger}]_{+}=\delta_{pq}
+\end{align} 
+
+\subsection{Wick's theorem} 
+Contraction for the product of two cration/annihalation operators is defined as:
+\begin{align}
+\contraction{}{A}{B}{}
+AB\equiv AB - \{AB\}
+\end{align}
+where $\{AB\}$ denotes a normal ordered string. Normal ordered string with the respect to true vacuum is in which all annihilation operators are on the right of all creation operators.
+An example of normal ordered string is:
+\begin{align}
+a_{q}^{\dagger}a_{p}\ket{vac}=0\\
+a_{p}\ket{vac}=0
+\end{align}  
+In order to simplify the notation, we define creation and annihilation operators as:
+\begin{align}
+a_{p}^{\dagger}=a^{p} \\
+a_{p}=a_{p}\\
+a_{p}^{\dagger}a_{q}=a_{q}^{p}\\
+a_{p}^{\dagger}a_{q}^{\dagger}a_{r}a_{s}=a^{pq}_{sr}\\
+\end{align} 
+
+
+\end{document}
