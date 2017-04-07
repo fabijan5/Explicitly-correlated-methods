@@ -169,8 +169,424 @@ In order to simplify the notation, we define creation and annihilation operators
 a_{p}^{\dagger}=a^{p} \\
 a_{p}=a_{p}\\
 a_{p}^{\dagger}a_{q}=a_{q}^{p}\\
-a_{p}^{\dagger}a_{q}^{\dagger}a_{r}a_{s}=a^{pq}_{sr}\\
+a_{p}^{\dagger}a_{q}^{\dagger}a_{r}a_{s}=a^{pq}_{sr}
 \end{align} 
+Up to four contraction can be defined using string of two creation/annihilation operators as:
+\begin{align}
+\contraction{}{A}{B}{}
+a_{p}q_{q}&= a_{p}q_{q} - \{a_{p}q_{q}\}\\
+\contraction{}{A}{B}{}
+a_{p}^{\dagger}q_{q}^{\dagger}&= a_{p}^{\dagger}q_{q}^{\dagger} - \{a_{p}^{\dagger}q_{q}^{\dagger}\}\\
+\contraction{}{A}{B}{}
+a_{p}^{\dagger}q_{q}&= a_{p}^{\dagger}q_{q} - \{a_{p}^{\dagger}q_{q}\}\\
+\contraction{}{A}{B}{}
+a_{p}q_{q}^{\dagger}&= a_{p}q_{q}^{\dagger} - \{a_{p}q_{q}^{\dagger}\}=\delta_{pq}
+\end{align} 
+or equivalently using tensor notation:
+\begin{align}
+\contraction{}{A}{B}{}
+a_{p}q_{q}&= a_{p}q_{q} - \{a_{p}q_{q}\}\\
+\contraction{}{A}{B}{}
+a^{p}q^{q}&= a^{p}q^{q} - \{a^{p}q^{q}\}\\
+\contraction{}{A}{B}{}
+a^{p}q_{q}&= a^{p}q_{q} - \{a^{p}q_{q}\}\\
+\contraction{}{A}{B}{}
+a_{p}q^{q}&= a_{p}q^{q} - \{a_{p}q^{q}\}=\delta_{p}^{q}
+\end{align}
+Wick's theorem states that any string of creation/annihilation operators can be expressed as the sum of normal ordered string with sums of single, double and so on contractions expressed by:
+\begin{align}
+AB...CD = \{AB...CD\}+
+\sum_{singles}
+\contraction{A}{B}{B}{}
+\{AB...CD\}+\sum_{doubles}\{AB...CD\}+...
+\end{align}
+
+The formalism that we have introduced for true vacuum can be extended to Fermi vacuum or the particle-hole formalism. Fermi vacuum is Hartree-Fock Slater determinant $\ket{\Phi_{0}}$. Occupied orbitals in $\ket{\Phi_{0}}$ denoted by $i,j,k...$ are called hole states, while unoccupied, $a,b,c...$ are particle states. In the case of HF Slater determinant, we define q-creation operators (creating holes and particles), $a_{i}$ and $a^{a}$ and q-annihilation operators (annihilating hole and particles), $a^{i}$ and $a_{a}$. From such definition, we arrive at two possible contractions:
+
+\begin{align}
+a^{i}a_{j}=\delta^{i}_{j}\\
+a_{a}a^{b}=\delta^{b}_{a}
+\end{align}
+
+\subsection{Normal-ordered electronic Hamiltonian using spin-orbital formalism}
+Hamiltonian operator expressed in terms of creation and annihilation operators is of the form:
+\begin{align}
+\hat{H} = \sum_{pq}\bra{p}\hat{h}\ket{q}a^{\dagger}_{p}a_{q}+\frac{1}{4}\sum_{pqrs}\bra{pq}\ket{rs}a_{p}^{\dagger}a_{q}^{\dagger}a_{s}a_{r}
+\end{align}
+Tensor notation for the matrix elements and operators:
+\begin{align}
+\bra{p}\hat{h}\ket{q}=h^{q}_{p}\\
+\bra{pq}\frac{1}{r_{12}}\ket{rs}=g^{rs}_{pq}
+\end{align}
+We can extend the notation on one- and two- electron parts of the Hamiltonian operator as:
+\begin{align}
+h_{1}&=\sum_{pq}\bra{p}\hat{h}\ket{q}a^{\dagger}_{p}a_{q}=h^{q}_{p}a^{p}_{q}\\
+h_{2}&=\sum_{pqrs}\bra{pq}\ket{rs}a_{p}^{\dagger}a_{q}^{\dagger}a_{s}a_{r}=\bar{g}^{rs}_{pq}a^{pq}_{rs}
+\end{align}
+where $\bar{g}^{rs}_{pq} = g^{rs}_{pq} - g^{rs}_{qr}$. Then Hamiltonian is of the form:
+\begin{align}
+\hat{H}=h^{q}_{p}a^{p}_{q}+\frac{1}{4}\bar{g}^{rs}_{pq}a^{pq}_{rs}
+\end{align}
+Such defined Hamiltonian has a general form and we want to define it using the normal ordering convention. One particle part of the Hamiltonian in normal-ordered form is:
+\begin{align}
+\hat{H}_{1}=h^{q}_{p}a^{p}_{q}=h^{q}_{p}a^{p}_{q}=h^{q}_{p}(\{a^{p}a_{q}\}+\delta^{p}_{q}\delta_{q\in i})=h^{q}_{p}(\tilde{a}^{p}_{q}+\delta^{p}_{q}\delta_{q\in i})=h^{q}_{p}\tilde{a}^{p}_{q}+\sum_{i}^{occ}h^{i}_{i}
+\end{align}
+while two-particle part of the Hamiltonian operator in the normal ordered form is:
+\begin{align}
+\hat{H}_{2}&=\frac{1}{4}\bar{g}_{pq}^{rs}a^{pq}_{rs}\\\nonumber
+&=\frac{1}{4}\bar{g}_{pq}^{rs}(\tilde{a}^{pq}_{rs})+\tilde{a}^{p}_{r}\delta^{q}_{s}\delta_{s\in i} + \tilde{a}^{q}_{s}\delta^{p}_{r}\delta_{r\in i} - \tilde{a}^{q}_{r}\delta^{p}_{s}\delta_{s\in i} - 
+\tilde{a}^{p}_{s}\delta^{q}_{r}\delta_{r\in i} + \delta^{q}_{s}\delta_{s\in i}\delta^{p}_{r}\delta_{r\in j} - \delta^{p}_{s}\delta_{s\in i}\delta^{q}_{r}\delta_{r\in j}\\\nonumber
+&=\frac{1}{4}(\bar{g}^{rs}_{pq}\tilde{a}^{pq}_{rs}+\bar{g}^{ri}_{pq}\tilde{a}^{p}_{r}+\bar{g}^{is}_{iq}\tilde{a}^{q}_{s}-\bar{g}^{ri}_{iq}\tilde{a}^{q}_{r}-\bar{g}^{is}_{pi}\tilde{a}^{p}_{s}+\bar{g}^{ji}_{ji}-\bar{g}^{ji}_{ij})=\frac{1}{4}\bar{g}^{rs}_{pq}\tilde{a}^{pq}_{rs}+\bar{g}^{qi}_{pq}\tilde{a}^{p}_{q}+\frac{1}{2}\bar{g}^{ij}_{ij}
+\end{align}
+Combining these two contributions to form total Hamiltonian, we obtain:
+\begin{align}
+\hat{H}=h^{i}_{i}+\frac{1}{2}\bar{g}^{ij}_{ij} + (h^{p}_{q}+\bar{g}^{iq}_{ip})\tilde{a}^{p}_{q}+\frac{1}{4}\bar{g}^{rs}_{pq}\tilde{a}^{pq}_{rs}
+\end{align}
+The three distinct contributions are as follows:
+\begin{align}
+E_{\text{HF}}&=h^{i}_{i}+\frac{1}{2}\bar{g}^{ij}_{ij}\\
+\hat{F}_{N}&=(h^{p}_{q}+\bar{g}^{iq}_{ip})\tilde{a}^{p}_{q}\\
+\hat{W}_{N}&=\frac{1}{4}\bar{g}^{rs}_{pq}\tilde{a}^{pq}_{rs}
+\end{align}
+with $E_{\text{HF}}$ being Hartree-Fock energy, $F_{N}$ normal-ordered Fock operator and $W_{N}$ is fluctuation operator. This allows us to define normal-ordered Hamiltonian as:
+\begin{align}
+\hat{H}_{N}= \hat{H}-\bra{\Psi_{0}}\hat{H}\ket{\Psi_{0}}=\hat{F}_{N}+\hat{W}_{N}
+\end{align}
+
+\subsection{Normal-ordered spin-free Hamiltonian}
+One-particle Hamiltonian is:
+\begin{align}
+\hat{H}_{1}&=h^{p}_{q}a^{q}_{p}=\sum_{pq}\sum_{\rho\sigma}h^{p_{\rho}}_{q_{\sigma}}a^{q_{\sigma}}_{p_{\rho}}=\sum_{pq}\sum_{\rho\sigma}\bra{\phi_{q}\sigma} \hat{h}\ket{\phi_{p}\rho} a^{q_{\sigma}}_{p_{\rho}}\\
+&=\sum_{pq}\sum_{\rho\sigma}\bra{\phi_{q}} \hat{h}\ket{\phi_{p}} \braket{\sigma|\rho}a^{q_{\sigma}}_{p_{\rho}}=\sum_{pq}\sum_{\rho=\alpha,\beta}\bra{\phi_{q}} \hat{h}\ket{\phi_{p}}a^{q_{\rho}}_{p_{\rho}}\\
+&=\sum_{pq}\bra{\phi_{q}} \hat{h}\ket{\phi_{p}}\sum_{\rho=\alpha,\beta}a^{q_{\rho}}_{p_{\rho}}=\sum_{pq}\bra{\phi_{q}} \hat{h}\ket{\phi_{p}}(a^{q_{\alpha}}_{p_{\alpha}}+a^{q_{\beta}}_{p_{\beta}})
+\end{align}
+where $\rho,\sigma=\{\alpha,\beta\}$ and $\braket{\sigma|\rho}=\delta^{\sigma}_{\rho}$. We can define spin-free equivalent of the one particle replacer as $E^{q}_{p}=a^{q_{\alpha}}_{p_{\alpha}}+a^{q_{\beta}}_{p_{\beta}}$.
+
+The two-particle part of the Hamiltonian is:
+\begin{align}
+\hat{H}_{2}&=\frac{1}{2}g^{pq}_{rs}a^{rs}_{pq}=\frac{1}{2}\sum_{pqrs}\sum_{\rho\sigma\mu\nu}\braket{\phi_{p}\rho\phi_{q}\sigma|\phi_{r}\mu\phi_{s}\nu}a^{r_{\mu}s_{\nu}}_{p_{\rho}q_{\sigma}}\\
+&=\frac{1}{2}\sum_{pqrs}\sum_{\rho\sigma\mu\nu}\braket{\phi_{p}\phi_{q}|\phi_{r}\phi_{s}}\braket{\rho|\sigma}\braket{\mu|\nu}a^{r_{\mu}s_{\nu}}_{p_{\rho}q_{\sigma}}=\frac{1}{2}\sum_{pqrs}\braket{\phi_{p}\phi_{q}|\phi_{r}\phi_{s}}\sum_{\rho\sigma}a^{r_{\rho}s_{\sigma}}_{p_{\rho}q_{\sigma}}\\
+&=\frac{1}{2}\sum_{pqrs}\braket{\phi_{p}\phi_{q}|\phi_{r}\phi_{s}}(a^{r_{\alpha}s_{\alpha}}_{p_{\alpha}q_{\alpha}}+a^{r_{\alpha}s_{\beta}}_{p_{\alpha}q_{\beta}}+a^{r_{\beta}s_{\alpha}}_{p_{\beta}q_{\alpha}}+a^{r_{\beta}s_{\beta}}_{p_{\beta}q_{\beta}})
+\end{align}
+where we define two-electron replacer $E^{rs}_{pq}=a^{r_{\alpha}s_{\alpha}}_{p_{\alpha}q_{\alpha}}+a^{r_{\alpha}s_{\beta}}_{p_{\alpha}q_{\beta}}+a^{r_{\beta}s_{\alpha}}_{p_{\beta}q_{\alpha}}+a^{r_{\beta}s_{\beta}}_{p_{\beta}q_{\beta}}$. 
+
+Spin-free Hamiltonian is $\hat{H}=h^{p}_{q}E^{q}_{p}+\frac{1}{2}g^{pq}_{rs}E^{rs}_{pq}$. One-particle part of the Hamiltonian is:
+\begin{align}
+\hat{H}_{1}&=h^{p}_{q}E^{q}_{p}=h^{p}_{q}(\tilde{E}^{q}_{p}+\delta^{q}_{p}\delta_{p \in i}n_{i})=h^{p}_{q}\tilde{E}^{q}_{p}+2\sum_{i}h^{i}_{i}
+\end{align}
+where $n_{i}$ is number of electrons in occupied orbital i. For closed-shell systems $n_{i}=2$.
+
+The two-particle part of the Hamiltonian:
+\begin{align}
+\hat{H}_{2}&=\frac{1}{2}g^{pq}_{rs}E^{rs}_{pq}\\\nonumber
+&=\frac{1}{2}g^{pq}_{rs}(\tilde{E}^{rs}_{pq}+\tilde{E}^{r}_{p}\delta^{s}_{q}\delta_{q \in i}n_{i})+\tilde{E}^{s}_{q}\delta^{r}_{p}\delta_{p \in i}n_{i}-\tilde{E}^{r}_{q}\delta^{s}_{p}\delta_{p \in i}n_{i}/2-\tilde{E}^{s}_{p}\delta^{r}_{q}\delta_{q \in i}n_{i}/2\\\nonumber
+&+\delta^{s}_{q}\delta^{r}_{p}\delta_{q \in i}\delta_{p \in j}n_{i}n_{j}-\delta^{s}_{p}\delta^{r}_{q}\delta_{q \in i}\delta_{p \in j}n_{i}n_{j}/2\\\nonumber
+&=\frac{1}{2}g^{pq}_{rs}\tilde{E^{rs}_{pq}}+2g^{ip}_{iq}\tilde{E}^{q}_{p}-g^{ip}_{qi}\tilde{E}^{q}_{p}+2g^{ij}_{ij}-g^{ij}_{ji}
+\end{align}
+
+Together, these two contributions to total Hamiltonian in normal-ordered form gives:
+\begin{align}
+\hat{H}=(h^{p}_{q}+2g^{ip}_{iq}-g^{pi}_{iq})\tilde{E}^{q}_{p}+\frac{1}{2}g^{pq}_{rs}\tilde{E}^{rs}_{pq}+2h^{i}_{i}+2g^{ij}_{ij}-g^{ji}_{ij}
+\end{align} 
+with $\hat{F}_{N}=(h^{p}_{q}+2g^{ip}_{iq}-g^{pi}_{iq})\tilde{E}^{q}_{p}$, $\hat{W}_{N}=\frac{1}{2}g^{pq}_{rs}\tilde{E}^{rs}_{pq}$ and $E_{\text{HF}}=2h^{i}_{i}+2g^{ij}_{ij}-g^{ji}_{ij}$.
+
+\section{M{\o}ller-Plesset second-order perturbation theory}
+In this section we will apply machinery developed in the previous sections for derivation of the M{\o}ller-Plesset second-order perturbation theory equations. We will tackle this problem using two different, by minimizing Hylleraas functional and via first-order wave-equations. We will do that for the spin-orbital and spin-free formalism.
+
+\subsection{Minimization of Hylleraas functional}
+Hylleraas second-order functional is defined by:
+\begin{align}
+H^{(2)}=2\bra{0}\hat{W}_{N}\ket{1}+\bra{1}\hat{F}_{N}\ket{1}
+\end{align}
+with the $\ket{0}=\ket{\Phi_{0}}=\ket{\text{HF}}$ while the first-order wave-function is defined by: $\ket{1}=\hat{T}\ket{0}=\frac{1}{4}t^{ij}_{ab}\tilde{a}^{ab}_{ij}$.
+Rules for generalized Wick's theorem in spin-orbital form are that every hole contraction and every closed loop will give one negative sign. First part of the Hylleraas functional can be resolved as follows:
+\begin{align}
+\bra{0}\hat{W}_{N}\ket{1}=\bra{0}\frac{1}{4}\bar{g}^{pq}_{rs}\tilde{a}^{rs}_{pq}\frac{1}{4}t^{ij}_{ab}\tilde{a}^{ab}_{ij}\ket{0}=\frac{1}{16}\bar{g}^{pr}_{rs}t^{ij}_{ab}\bra{0}\tilde{a}^{rs}_{pq}\tilde{a}^{ab}_{ij}\ket{0}
+\end{align}
+Only fully contracted terms will give result different than zero.
+\begin{align}
+\tilde{a}^{rs}_{pq}\tilde{a}^{ab}_{ij}&=\delta^{r}_{i}\delta^{s}_{j}\delta^{a}_{p}\delta^{b}_{q}\\
+\tilde{a}^{rs}_{pq}\tilde{a}^{ab}_{ij}&=-\delta^{r}_{i}\delta^{s}_{j}\delta^{b}_{p}\delta^{a}_{q}\\
+\tilde{a}^{rs}_{pq}\tilde{a}^{ab}_{ij}&=-\delta^{s}_{i}\delta^{r}_{j}\delta^{a}_{p}\delta^{b}_{q}\\
+\tilde{a}^{rs}_{pq}\tilde{a}^{ab}_{ij}&=\delta^{r}_{i}\delta^{s}_{j}\delta^{a}_{q}\delta^{b}_{p}
+\end{align}
+giving 
+\begin{align}
+\bra{0}\hat{W}_{N}\ket{1}=\frac{1}{16}t^{ij}_{ab}(\bar{g}^{ab}_{ij}-\bar{g}^{ba}_{ij}-\bar{g}^{ab}_{ji}+\bar{g}^{ba}_{ji})=\frac{1}{16}t^{ij}_{ab}(\bar{g}^{ab}_{ij}
++\bar{g}^{ab}_{ij}+\bar{g}^{ab}_{ij}+\bar{g}^{ab}_{ij})=\frac{1}{4}t^{ij}_{ab}\bar{g}^{ab}_{ij}
+\end{align}
+Finally, first part of the Hyllearaas functional contribution will be:
+\begin{align}
+2\bra{0}\hat{W}_{N}\ket{1}=\frac{1}{2}t^{ij}_{ab}\bar{g}^{ab}_{ij}
+\end{align}
+The second part of the Hylleraas functional is more involved due to more possible contractions that may occur. We can resolve matrix elements as:
+\begin{align}
+\bra{1}\hat{F}_{N}\ket{1}=\bra{0}\hat{T}^{\dagger}\hat{F}_{N}\hat{T}\ket{0}=\bra{0}\frac{1}{4}t^{cd}_{kl}\tilde{a}^{kl}_{cd}F^{p}_{q}\tilde{a}^{p}_{q}\frac{1}{4}t^{ij}_{ab}\tilde{a}^{ab}_{ij}\ket{0}=\frac{1}{16}t^{cd}_{kl}F^{p}_{q}t^{ij}_{ab}\bra{0}\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}\ket{0}
+\end{align}
+with $\hat{T}=\frac{1}{4}t^{ij}_{ab}\tilde{a}^{ab}_{ij}$, $\hat{T}^{\dagger}=\frac{1}{4}t^{cd}_{kl}\tilde{a}^{kl}_{cd}$ and $\hat{F}_{N}=F^{q}_{p}\tilde{a}^{p}_{q}$. As before, only fully contracted terms will contribute to the final result that may be written as:
+\begin{align}
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&= +\delta^{p}_{i}\delta^{k}_{j}\delta^{l}_{q}\delta^{a}_{c}\delta^{b}_{d}t^{cd}_{kl}F^{q}_{p}=t^{ab}_{jl}F^{l}_{i}=-t^{ab}_{kj}F^{k}_{i}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&= -\delta^{p}_{i}\delta^{k}_{j}\delta^{l}_{q}\delta^{b}_{c}\delta^{a}_{d}t^{cd}_{kl}F^{q}_{p}=-t^{ba}_{jl}F^{l}_{i}=-t^{ab}_{kj}F^{k}_{i}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&= -\delta^{p}_{i}\delta^{l}_{j}\delta^{k}_{q}\delta^{a}_{c}\delta^{b}_{d}t^{cd}_{kl}F^{q}_{p}=-t^{ab}_{kj}F^{k}_{i}=-t^{ab}_{kj}F^{k}_{i}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&= +\delta^{p}_{i}\delta^{l}_{j}\delta^{k}_{q}\delta^{b}_{c}\delta^{a}_{d}t^{cd}_{kl}F^{q}_{p}=t^{ba}_{kj}F^{k}_{i}=-t^{ab}_{kj}F^{k}_{i}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&= -\delta^{p}_{j}\delta^{k}_{i}\delta^{l}_{q}\delta^{a}_{c}\delta^{b}_{d}t^{cd}_{kl}F^{q}_{p}=-t^{ab}_{il}F^{l}_{j}=-t^{ab}_{ik}F^{k}_{j}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=+ \delta^{p}_{j}\delta^{k}_{i}\delta^{l}_{q}\delta^{a}_{d}\delta^{b}_{c}t^{cd}_{kl}F^{q}_{p}=t^{ba}_{il}F^{l}_{j}=-t^{ab}_{ik}F^{k}_{j}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&= \delta^{p}_{j}\delta^{l}_{i}\delta^{k}_{q}\delta^{a}_{c}\delta^{b}_{d}t^{cd}_{kl}F^{q}_{p}=-t^{ab}_{ki}F^{k}_{j}=-t^{ab}_{ik}F^{k}_{j}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=- \delta^{p}_{j}\delta^{l}_{i}\delta^{k}_{q}\delta^{a}_{d}\delta^{b}_{c}t^{cd}_{kl}F^{q}_{p}=-t^{ba}_{ki}F^{k}_{j}=-t^{ab}_{ik}F^{k}_{j}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=- \delta^{p}_{c}\delta^{a}_{d}\delta^{b}_{q}\delta^{k}_{i}\delta^{l}_{j}t^{cd}_{kl}F^{q}_{p}=-t^{ca}_{ij}F^{b}_{c}=t^{ac}_{ij}F^{b}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=+ \delta^{p}_{c}\delta^{a}_{d}\delta^{b}_{q}\delta^{l}_{i}\delta^{k}_{j}t^{cd}_{kl}F^{q}_{p}=t^{ca}_{ji}F^{b}_{c}=t^{cb}_{ij}F^{a}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=+ \delta^{p}_{c}\delta^{b}_{d}\delta^{a}_{q}\delta^{k}_{i}\delta^{l}_{j}t^{cd}_{kl}F^{q}_{p}=t^{cb}_{ij}F^{a}_{c}=t^{cb}_{ij}F^{a}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=- \delta^{p}_{c}\delta^{b}_{d}\delta^{a}_{q}\delta^{l}_{i}\delta^{k}_{j}t^{cd}_{kl}F^{q}_{p}=-t^{cb}_{ji}F^{a}_{c}=t^{cb}_{ij}F^{a}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=+ \delta^{p}_{d}\delta^{a}_{c}\delta^{b}_{q}\delta^{k}_{i}\delta^{l}_{j}t^{cd}_{kl}F^{q}_{p}=t^{ad}_{ij}F^{b}_{d}=t^{ac}_{ij}F^{b}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=- \delta^{p}_{d}\delta^{a}_{c}\delta^{b}_{q}\delta^{k}_{j}\delta^{l}_{i}t^{cd}_{kl}F^{q}_{p}=-t^{ad}_{ji}F^{b}_{d}=t^{ac}_{ij}F^{b}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=- \delta^{p}_{d}\delta^{b}_{c}\delta^{b}_{q}\delta^{k}_{i}\delta^{l}_{j}t^{cd}_{kl}F^{q}_{p}=-t^{bd}_{ij}F^{a}_{d}=t^{cb}_{ij}F^{a}_{c}\\
+\tilde{a}^{kl}_{cd}\tilde{a}^{p}_{q}\tilde{a}^{ab}_{ij}t^{cd}_{kl}F^{q}_{p}&=- \delta^{p}_{d}\delta^{b}_{c}\delta^{a}_{q}\delta^{k}_{j}\delta^{l}_{i}t^{cd}_{kl}F^{q}_{p}=t^{bd}_{ji}F^{a}_{d}=t^{cb}_{ij}F^{a}_{c}
+\end{align}
+giving the
+\begin{align}
+\bra{1}\hat{F}_{N}\ket{1}=\frac{1}{4}t^{ij}_{ab}(t^{ac}_{ij}F^{b}_{c}+t^{cb}_{ij}F^{a}_{c}-t^{ab}_{kj}F^{ki}-t^{ab}_{ik}F^{k}_{j})
+\end{align}
+The final for of the second-order Hylleraas functional is now:
+\begin{align}
+H^{(0)}(\ket{1})=\frac{1}{4}t^{ij}_{ab}(2\bar{g}^{ab}_{ij}+t^{ac}_{ij}F^{b}_{c}+t^{cb}_{ij}F^{a}_{c}-t^{ab}_{kj}F^{ki}-t^{ab}_{ik}F^{k}_{j})
+\end{align}
+To find optimal amplitudes, we need to minimize the Hylleraas functional as:
+\begin{align}
+\frac{\partial H^{(2)}}{\partial t^{mn}_{ef}}=0
+\end{align}
+
+Thus the first term will be of the form:
+\begin{align}
+\frac{\partial }{\partial t^{mn}_{ef}}\bigg(\frac{1}{2}t^{ij}_{ab}\bar{g}^{ab}_{ij}\bigg)=\frac{1}{2}\delta^{i}_{m}\delta^{j}_{n}\delta^{a}_{l}\delta^{b}_{f}\bar{g}^{ab}_{ij}=\frac{1}{2}\bar{g}^{ef}_{mn}=\frac{1}{2}\bar{g}^{ab}_{ij}
+\end{align}
+The second term will be:
+\begin{align}
+\frac{\partial }{\partial t^{mn}_{ef}}\bigg(\frac{1}{4}t^{ij}_{ab}t^{ac}_{ij}F^{b}_{c}\bigg)&=\frac{1}{4}\bigg(\frac{\partial t^{ij}_{ab}}{\partial t^{mn}_{ef}}t^{ac}_{ij}+t^{ij}_{ab}\frac{\partial t^{ac}_{ij}}{\partial t^{mn}_{ef}}\bigg)F^{b}_{c}=\frac{1}{4}F^{b}_{c}(\delta^{i}_{m}\delta^{j}_{n}\delta^{a}_{l}\delta^{b}_{f}t^{ac}_{ij}+t^{ij}_{ab}\delta^{a}_{e}\delta^{c}_{f}\delta^{i}_{m}\delta^{j}_{n})\\\nonumber
+&=\frac{1}{4}(t^{ec}_{mn}F^{f}_{c}+t^{mn}_{eb}F^{b}_{f})=\frac{1}{2}t^{ec}_{mn}F^{f}_{c}=\frac{1}{2}t^{ac}_{ij}F^{b}_{c}
+\end{align}
+The remaining terms are resolved in the similar manner as the previous one.
+Finally, we can write amplitude equation of also known as MP1 equations as:
+\begin{align}
+\frac{\partial H^{(2)}}{\partial t}=\frac{1}{2}\bar{g}^{ab}_{ij}+\frac{1}{2}t^{cb}_{ij}F^{a}_{c}+\frac{1}{2}t^{ac}_{ij}F^{b}_{c}-\frac{1}{2}t^{ab}_{kj}F^{i}_{k}-\frac{1}{2}t^{ab}_{ik}F^{j}_{k}=0
+\end{align}
+as:
+\begin{align}
+R^{ab}_{ij}=\bar{g}^{ab}_{ij}+t^{cb}_{ij}F^{a}_{c}+t^{ac}_{ij}F^{b}_{c}-t^{ab}_{kj}F^{i}_{k}-t^{ab}_{ik}F^{j}_{k}=0
+\end{align}
+
+\subsection{R-S perturbation theory}
+In order to derive the amplitude equation, we can start from the MP1 equations that we have derived in the context of the R-S perturbation theory:
+\begin{align}
+\hat{H}^{(1)}\ket{0}+\hat{H}^{(0)}\ket{1}=E^{(1)}\ket{0}+E^{(0)}\ket{1}
+\end{align}
+with $\hat{H}=\hat{H}^{(0)}+\hat{H}^{(1)}=E_{\text{HF}}+\hat{F}_{N}+\hat{W}_{N}$ where we define $\hat{H}^{(0)}=E_{\text{HF}}+\hat{F}_{N}$ and $\hat{H}^{(1)}=\hat{W}_{N}$. Now MP1 equations reads as:
+\begin{align}
+\hat{W}_{N}\ket{0}+(E_{\text{HF}}+\hat{F}_{N})\ket{1}=E^{(1)}\ket{0}+E^{(0)}\ket{1}
+\end{align} 
+which can be solved by projection on the right hand side onto the space of doubly excited determinants giving:
+\begin{align}
+\bra{^{kl}_{cd}}\hat{W}_{N}\ket{0}+\bra{^{kl}_{cd}}\hat{F}_{N}\ket{1}=0
+\end{align}   
+By resolving the matrix elements using the Wick's theorem rules, we arrive at the amplitude equation expression:
+\begin{align}
+R^{ab}_{ij}=\bar{g}^{ab}_{ij}+t^{cb}_{ij}F^{a}_{c}+t^{ac}_{ij}F^{b}_{c}-t^{ab}_{kj}F^{i}_{k}-t^{ab}_{ik}F^{j}_{k}=0
+\end{align}
+
+\subsection{Minimization of Hylleraas functional in the spin-free form}
+We star the derivation of the MP1 amplitude equations from the second-order Hylleraas functional
+\begin{align}
+H^{(0)}=2\bra{0}\hat{W}_{N}\ket{1}+\bra{1}\hat{F}_{N}\ket{1}
+\end{align}
+where $\ket{1}=\frac{1}{2}t^{ij}_{ab}E^{ab}_{ij}$, $\hat{W}_{N}=]\frac{1}{2}g^{pq}_{rs}\tilde{E^{rs}_{pq}}$ and $\hat{F}_{N}=F^{p}_{q}\tilde{E}^{q}_{p}$ where $\ket{1}$ is already in normal-ordered form. The rules for Wick's theorem in the spin-free formalism are that every hole contraction contributes with one minus sign and every closed loop contribute with -2. Having that in mind, we can resolve the matrix elements of the Hylleraas functional staring from the first contribution:
+
+\begin{align}
+\bra{0}\hat{W}_{N}\ket{1}=\bra{0}\frac{1}{2}g^{pq}_{rs}\tilde{E}^{rs}_{pq}\frac{1}{2}t^{ij}_{ab}E^{ab}_{ij}\ket{0}=\frac{1}{4}g^{pq}_{rs}t^{ij}_{ab}\bra{0}\tilde{E}^{rs}_{pq}E^{ab}_{ij}\ket{0}
+\end{align}
+
+then the elements inside brackets can be resolved as:
+\begin{align}
+\tilde{E^{rs}_{pq}}\tilde{E}^{ab}_{ij}&=+4\delta^{r}_{i}\delta^{s}_{j}\delta^{a}_{p}\delta^{b}_{q}\\
+\tilde{E^{rs}_{pq}}\tilde{E}^{ab}_{ij}&=-2\delta^{r}_{i}\delta^{s}_{j}\delta^{b}_{p}\delta^{a}_{q}\\
+\tilde{E^{rs}_{pq}}\tilde{E}^{ab}_{ij}&=-2\delta^{s}_{i}\delta^{r}_{j}\delta^{a}_{p}\delta^{b}_{q}\\
+\tilde{E^{rs}_{pq}}\tilde{E}^{ab}_{ij}&=+4\delta^{s}_{i}\delta^{r}_{j}\delta^{b}_{p}\delta^{a}_{q}
+\end{align}
+Inserting these 4 expressions, we obtain:
+
+
+\begin{align}
+\bra{0}\hat{W}_{N}\ket{1}=\frac{1}{4}(8g^{ab}_{ij}t^{ij}_{ab}-4g^{ba}_{ij}t^{ij}_{ab})=(2g^{ab}_{ij}-g^{ba}_{ij})t^{ij}_{ab}=\bar{g}^{ab}_{ij}t^{ij}_{ab}
+\end{align}
+where $\bar{g}^{ab}_{ij}=2g^{ab}_{ij}-g^{ba}_{ij}$ antisymmertized two-electron integrals equivalent in the spin-free formalism. We used the same notation for the spin-orbital formalism but now context is different. From now on, we will only use spin-free formalism in derivation of the F12 methods.
+
+The resolution of the second part of the Hylleraas functional $\bra{1}\hat{F}_{N}\ket{1}$ is:
+\begin{align}
+\bra{1}\hat{F}_{N}\ket{1}=\bra{0}\hat{T}^{\dagger}\hat{F}_{N}\hat{T}\ket{0}=\frac{1}{4}t^{cd}_{kl}F^{p}_{q}t^{ij}_{ab}\bra{0}\tilde{E}^{kl}_{cd}\tilde{F}^{q}_{p}\tilde{E}^{ab}_{ij}\ket{0}
+\end{align}
+The expression inside the brackets can be resolved as:
+\begin{align}
+\tilde{E}^{kl}_{cd}\tilde{F}^{q}_{p}\tilde{E}^{ab}_{ij}=-4\delta^{q}_{i}\delta^{l}_{j}\delta^{k}_{p}\delta^{a}_{c}\delta^{b}_{d}\\
+\tilde{E}^{kl}_{cd}\tilde{F}^{q}_{p}\tilde{E}^{ab}_{ij}=+2\delta^{q}_{i}\delta^{l}_{j}\delta^{k}_{p}\delta^{b}_{c}\delta^{a}_{d}
+\end{align}
+with 16 elements in total. After resolving matrix elements, we arrive at the expression for the Hylleraas expression:
+\begin{align}
+H^{(0)}&=2\bra{0}\hat{W}_{N}\ket{1}+\bra{1}\hat{F}_{N}\ket{1}=(4g^{ab}_{ij}-2g^{ba}_{ij})t^{ij}_{ab}\\\nonumber
+&+2t^{ij}_{ab}t^{ac}_{ij}F^{b}_{c}-t^{ij}_{ab}t^{ca}_{ij}F^{b}_{c}+2t^{ij}_{ab}t^{cb}_{ij}F^{a}_{c}-t^{ij}_{ab}t^{bc}_{ij}F^{a}_{c}-2t^{ij}_{ab}t^{ab}_{kj}F^{k}_{i}+t^{ij}_{ab}t^{ba}_{kj}F^{k}_{i}-2t^{ij}_{ab}t^{ab}_{ik}F^{k}_{j}+t^{ij}_{ab}t^{ba}_{ik}F^{k}_{j}
+\end{align}
+Minimization of the Hyllearaas function with the respect to the amplitudes, as was derived in the previous section gives the set of MP1 amplitude equations in spin-free formalism:
+\begin{align}
+R^{ij}_{ab}=\bar{g}^{ij}_{ab}
++\bar{t}^{ij}_{ac}F^{c}_{b}+\bar{t}^{ij}_{cb}F^{c}_{a}-\bar{t}^{kj}_{ab}F^{i}_{k}-\bar{t}^{ik}_{ab}F^{j}_{k}
+\end{align}
+with $\bar{t}^{ij}_{ab}=2t^{ij}_{ab}-t^{ij}_{ba}$. By solving the linear system of equations, we obtain optimized amplitudes that can be used for evaluation of te second order energy contribution also know as MP2 energy as:
+
+\begin{align}
+E^{(2)}=\bra{0}\hat{H}^{(1)}\ket{1}=\bra{0}\hat{W}_{N}\ket{1}=\bar{g}^{ab}_{ij}t^{ij}_{ab}=g^{ab}_{ij}\bar{t}^{ij}_{ab}
+\end{align} 
+
+Selecting the canonical orbitals, in which Fock matrix has diagonal form, we arrive as the well known expression for the MP2 energy correction as:
+
+\begin{align}
+E^{(2)}=\sum_{ijab}\frac{(2g^{ab}_{ij}-g^{ba}_{ij})t^{ij}_{ab}}{\epsilon_{i}+\epsilon_{j}-\epsilon_{a}-\epsilon_{b}}
+\end{align} 
+
+\section{Explicitly correlated methods}
+
+\subsection{MP2-F12 method}
+Within explicitly correlated formalism, the first-order wave function in the spin-free formalism is
+\begin{align}
+\ket{1}=\ket{1_{\text{MP2}}}+\ket{1_{\text{F12}}}=\frac{1}{2}t^{ij}_{ab}\tilde{E}^{ab}_{ij}\ket{0}+\frac{1}{2}\tilde{R}^{ij}_{\alpha\beta}\tilde{E}^{\alpha\beta}_{ij}\ket{0}
+\end{align} 
+where $\tilde{R}^{ij}_{\alpha\beta}$ is matrix element of the explicit-correlation factor.
+
+The Hylleraas functional for the F12 augmented MP1 wave function is
+\begin{align}
+H^{(2)}_{\text{MP2-F12}}&=\bra{1}\hat{F}_{N}\ket{1}+2\bra{0}\hat{W}_{N}\ket{1}\\
+&=\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{MP2}}}+2\bra{0}\hat{W}_{N}\ket{1_{\text{MP2}}}+\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}\\
+&+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{MP2}}}+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}+2\bra{0}\hat{W}_{N}\ket{1_{\text{F12}}}
+\end{align} 
+
+having the $H^{(2)}_{\text{MP2}}=\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{MP2}}}+2\bra{0}\hat{W}_{N}\ket{1_{\text{MP2}}}$ and using the adjoint property of the matrix elements, we have:
+
+\begin{align}
+H^{(2)}_{\text{MP2-F12}}&=H^{(2)}_{\text{MP2}}+2\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}+2\bra{0}\hat{W}_{N}\ket{1_{\text{F12}}}
+\end{align} 
+
+As we have showed in the previous chapter, the Hylleraas functional for the MP1 wave function in the spin-free formalism is $2\bar{t}^{ij}_{ab}g^{ab}_{ij}
++\bar{t}^{ij}_{ab}t_{ij}^{ac}F_{c}^{b}+\bar{t}^{ij}_{ab}t_{ij}^{cb}F_{c}
+^{a}-\bar{t}^{ij}_{ab}t_{kj}^{ab}F_{i}^{k}-\bar{t}^{ij}_{ab}t_{ik}^{ab}F_{j}^{k}$. The only thing that remains is to resolve the following three matrix elements $\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}$, $\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}$ and $\bra{0}\hat{W}_{N}\ket{1_{\text{F12}}}$. The resolution of the $\bra{0}\hat{W}_{N}\ket{1_{\text{F12}}}$ is as follows:
+
+\begin{align}
+\bra{0}\hat{W}_{N}\ket{1_{\text{F12}}}=\frac{1}{4}g^{pq}_{rs}\tilde{R}^{ij}_{\alpha\beta}\bra{0}\tilde{E}^{rs}_{pq}\tilde{E}^{\alpha\beta}_{ij}\ket{0}=(2g^{\alpha\beta}_{ij}-g^{\alpha\beta}_{ji})\tilde{R}^{ij}_{\alpha\beta}=2V^{ij}_{ij}-V^{ji}_{ij}=\bar{V}^{ij}_{ij}
+\end{align}
+
+where $V^{ij}_{ij}=g^{\alpha\beta}_{ij}\tilde{R}^{ij}_{\alpha\beta}$. Here, the summation over the $\alpha$ and $\beta$ indices is assumed.
+
+The term $\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}$ is evaluated as follows:
+
+\begin{align}
+\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}&=\frac{1}{4}t^{ab}_{ij}F^{p}_{q}\tilde{R}^{kl}_{\alpha\beta}\bra{0}\tilde{E}^{ij}_{ab}\tilde{E}^{p}_{q}\tilde{E}^{\alpha\beta}_{kl}\ket{0}
+\end{align}
+resolution of the matrix elements will give:
+
+\begin{align}
+\tilde{E}^{ij}_{ab}\tilde{E}^{p}_{q}\tilde{E}^{\alpha\beta}_{kl}=-2\delta^{i}_{k}\delta^{j}_{l}\delta^{q}_{a}\delta^{b}_{\alpha}\delta^{\beta}_{p}=-2F^{\beta}_{a}\tilde{R}^{ij}_{b\beta}=-2F^{\alpha}_{a}\tilde{R}^{ij}_{b\alpha}\\
+\tilde{E}^{ij}_{ab}\tilde{E}^{p}_{q}\tilde{E}^{\alpha\beta}_{kl}=+4\delta^{i}_{k}\delta^{j}_{l}\delta^{q}_{a}\delta^{b}_{\beta}\delta^{\alpha}_{p}=+4F^{\alpha}_{a}\tilde{R}^{ij}_{\alpha b}=+4F^{\alpha}_{a}\tilde{R}^{ij}_{\alpha b}\\
+\end{align}
+There are 8 such contractions. Collecting all of them will give:
+
+\begin{align}
+2\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}&=2t^{ab}_{ij}[F^{\alpha}_{a}(2\tilde{R}^{ij}_{\alpha b}-\tilde{R}^{ji}_{\alpha b})+F^{\alpha}_{b}(2\tilde{R}^{ij}_{a\alpha}-\tilde{R}^{ji}_{a\alpha})]\\
+&=2\bar{t}^{ab}_{ij}(F^{\alpha}_{a}\tilde{R}^{ij}_{\alpha b}+F^{\alpha}_{b}\tilde{R}^{ij}_{a\alpha})=2\bar{t}^{ab}_{ij}C^{ij}_{ab}
+\end{align}
+where $\bar{t}^{ab}_{ij}=2t^{ab}_{ij}-t^{ab}_{ji}$ and intermediate $C^{ij}_{ab}=F^{\alpha}_{a}\tilde{R}^{ij}_{\alpha b}+F^{\alpha}_{b}\tilde{R}^{ij}_{a\alpha}$.
+
+Lastly, we resolve $\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}$ matrix elements. 
+
+\begin{align}
+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}=\frac{1}{4}\tilde{R}_{ij}^{\alpha\beta}F^{p}_{q}\tilde{R}^{kl}_{\gamma\delta}\bra{0}\tilde{E}^{ij}_{\alpha\beta}\tilde{E}^{q}_{p}\tilde{E}^{\gamma\delta}_{kl}\ket{0}
+\end{align}
+Furthermore, the expression in brackets will give two intermediates that arise by 2-hole-3-particle and 3-hole-2-particle contractions. Let us first resolve 2-hole-3-particle. This will give 8 different contractions in total, however, we show here only first few:
+
+\begin{align}
+\tilde{E}^{ij}_{\alpha\beta}\tilde{E}^{q}_{p}\tilde{E}^{\gamma\delta}_{kl}=-2\delta^{i}_{k}\delta^{j}_{l}\delta^{q}_{\alpha}\delta^{\gamma}_{\beta}\delta^{\delta}_{p}=-2\tilde{R}^{\alpha\beta}_{ij}F^{\delta}_{\alpha}\tilde{R}^{ij}_{\beta\delta}=-2\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\alpha}\tilde{R}^{ij}_{\beta\gamma}\\
+\tilde{E}^{ij}_{\alpha\beta}\tilde{E}^{q}_{p}\tilde{E}^{\gamma\delta}_{kl}=+4\delta^{i}_{k}\delta^{j}_{l}\delta^{q}_{\alpha}\delta^{\delta}_{\beta}\delta^{\gamma}_{p}=+4\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\alpha}\tilde{R}^{ij}_{\gamma\beta}=+4\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\alpha}\tilde{R}^{ij}_{\gamma\beta}
+\end{align}  
+
+Collecting all 8 contributions yields:
+\begin{align}
+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}\leftarrow2\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\alpha}\tilde{R}^{ij}_{\gamma\beta}+2\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\beta}\tilde{R}^{ij}_{\alpha\gamma}-\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\alpha}\tilde{R}^{ji}_{\gamma\beta}-\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\beta}\tilde{R}^{ji}_{\alpha\gamma}
+\end{align}
+
+we can define a new intermediate $B^{ij}_{ij}=\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\alpha}\tilde{R}^{ij}_{\gamma\beta}+\tilde{R}^{\alpha\beta}_{ij}F^{\gamma}_{\beta}\tilde{R}^{ij}_{\alpha\gamma}$ gives $\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}\leftarrow\bar{B}^{ij}_{ij}$ where $\bar{B}^{ij}_{ij}=2B^{ij}_{ij}-B^{ji}_{ij}$. Finally, we can resolve the remaining 8 contributions that arise from 3-hole-2-particle contractions. Here, we will skip derivation of the all 8 contractions and proceed to the final result  
+
+\begin{align}
+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}&\leftarrow-[2\tilde{R}^{\alpha\beta}_{ij}\tilde{R}^{kj}_{\alpha\beta}F^{i}_{k}-\tilde{R}^{\alpha\beta}_{ij}\tilde{R}^{jk}_{\alpha\beta}F^{i}_{k}+2\tilde{R}^{\alpha\beta}_{ij}\tilde{R}^{ik}_{\alpha\beta}F^{j}_{k}-\tilde{R}^{\alpha\beta}_{ij}\tilde{R}^{ki}_{\alpha\beta}F^{j}_{k}]\\\nonumber
+&=-[(2X^{kj}_{ij}-X^{jk}_{ij})F^{i}_{k}+(2X^{ik}_{ij}-X^{ki}_{ij})F^{j}_{k}]=-[\tilde{X}^{kj}_{ij}F^{i}_{k}+\tilde{X}^{ik}_{ij}F^{j}_{k}]
+\end{align}
+
+where matrix elements of intermediate $X$ are defined as $X^{kj}_{ij}=\tilde{R}^{\alpha\beta}_{ij}\tilde{R}^{kj}_{\alpha\beta}$ and $\bar{X}^{kj}_{ij}=2X^{kj}_{ij}-X^{jk}_{ij}$ are antisymmetrized matrix elements in spin-free formalism. 
+
+Finally, we can collect all the contributions and write final expression for the second order Hylleraas functional:
+\begin{align}
+H^{(2)}_{\text{MP2-F12}}=&\bra{1}\hat{F}_{N}\ket{1}+2\bra{0}\hat{W}_{N}\ket{1}\\
+=&\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{MP2}}}+2\bra{0}\hat{W}_{N}\ket{1_{\text{MP2}}}+\bra{1_{\text{MP2}}}\hat{F}_{N}\ket{1_{\text{F12}}}\\
+&+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{MP2}}}+\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}+2\bra{0}\hat{W}_{N}\ket{1_{\text{F12}}}\\
+=&\bar{t}^{ij}_{ab}(g^{ab}_{ij}+C^{ab}_{ij}+\rho^{ab}_{ij})+2\bar{V}^{ij}_{ij}+\bar{B}^{ij}_{ij}-\bar{X}^{kj}_{ij}F^{i}_{k}-\bar{X}^{ik}_{ij}F^{j}_{k}
+\end{align} 
+where $\rho^{ab}_{ij}=\bra{^{ij}_{ab}}\hat{W}_{N}\ket{0}+\bra{^{ij}_{ab}}\hat{F}_{N}\ket{1_{\text{MP2}}}+\bra{^{ij}_{ab}}\hat{F}_{N}\ket{1_{\text{F12}}}$. For optimized amplitudes, the expression $\bar{t}^{ij}_{ab}\rho^{ab}_{ij}$ gives 0 and for such amplitudes $\text{MP2-F12}$ energy expression is:
+
+\begin{align}
+E_{\text{MP2-F12}}=\bar{t}^{ij}_{ab}(g^{ab}_{ij}+C^{ab}_{ij})+2\bar{V}^{ij}_{ij}+\bar{B}^{ij}_{ij}-\bar{X}^{kj}_{ij}F^{i}_{k}-\bar{X}^{ik}_{ij}F^{j}_{k}
+\end{align} 
+ 
+\subsection{Perturbative F12 correction to the CCSD energy} 
+The energy correction of the perturbative F12 approach is obtained by evaluating the following Hylleraas functional:
+
+\begin{align}
+E_{(2)_{\overline{\text{F12}}}}=\bra{1_{\text{F12}}}\hat{H}^{(0)}\ket{1_{\text{F12}}}+\bra{0}\hat{H}^{(1)}\ket{1_{\text{F12}}}+\bra{1_{\text{F12}}}\hat{H}^{(1)}\ket{0}
+\end{align} 
+ with $\ket{0}=\ket{\Psi_{0}}=\ket{\text{HF}}$ and $\bra{0}=\bra{\Psi_{0}}(1+\hat{T}^{\dagger})$.
+Zeroth-order Hamiltonian we take normal-ordered Fock operator while first-order Hamiltonian is normal-ordered similarity transformed Hamiltonian $\bar{H}_{N}$. This, second and third therms would yield many contributions, however, we will only consider contributions that are liner in amplitude expansion of the normal-ordered similarity transformed Hamiltonian. Thus, the first term will give familiar expression that we have derived in the previous section. 
+
+\begin{align}
+\mathcal{B}^{ij}_{ij}=\bra{1_{\text{F12}}}\hat{F}_{N}\ket{1_{\text{F12}}}
+=\bar{B}^{ij}_{ij}-\bar{X}^{kj}_{ij}F^{i}_{k}-\bar{X}^{ik}_{ij}F^{j}_{k}
+\end{align}  
+
+Let us define linear contributions to the normal-ordered similarity-transformed Hamiltonian:
+\begin{align}
+\bar{H}_{N}=\hat{F}_{N}+\hat{W}_{N}+\hat{F}_{N}\hat{T}_{1}+\hat{W}_{N}\hat{T}_{1}+\hat{F}_{N}\hat{T}_{2}+\hat{W}_{N}\hat{T}_{2}
+\end{align}  
+
+Resolution of the third term will give:
+\begin{align}
+\bra{1_{\text{F12}}}\bar{H}_{N}\ket{0}
+=&\bra{1_{\text{F12}}}\hat{F}_{N}\ket{0}+\bra{1_{\text{F12}}}\hat{W}_{N}\ket{0}+\bra{1_{\text{F12}}}\hat{F}_{N}\hat{T}_{1}\ket{0}+\bra{1_{\text{F12}}}\hat{W}_{N}\hat{T}_{1}\ket{0}\\\nonumber
+&+\bra{1_{\text{F12}}}\hat{F}_{N}\hat{T}_{2}\ket{0}+\bra{1_{\text{F12}}}\hat{W}_{N}\hat{T}_{2}\ket{0}
+\end{align}  
+
+Now, let us analyze each contribution that may arise from this term. The contribution $\bra{1_{\text{F12}}}\hat{F}_{N}\ket{0}$ will give 0 since no fully contracted contribution can be constructed. Second contribution, $\bra{1_{\text{F12}}}\hat{W}_{N}\ket{0}$, is familiar $\bar{V}^{ij}_{ij}$. The third term, $\bra{1_{\text{F12}}}\hat{F}_{N}\hat{T}_{1}\ket{0}$, is also zero due to Generalized-Brillouin condition (GBC) that states that $F^{i}_{\alpha}=0$. The contribution  $\bra{1_{\text{F12}}}\hat{W}_{N}\hat{T}_{1}\ket{0}$ will yield $\bar{V}^{ia}_{ij}t^{j}_{a}+\bar{V}^{aj}_{ij}t^{i}_{a}$. The contribution $\bra{1_{\text{F12}}}\hat{F}_{N}\hat{T}_{2}\ket{0}$ is familiar $C$ intermediate contracted with double amplitudes $\bar{C}^{ab}_{ij}t^{ij}_{ab}$. Lastly, $\bra{1_{\text{F12}}}\hat{W}_{N}\hat{T}_{2}\ket{0}$ will give $\bar{V}^{ab}_{ij}t^{ij}_{ab}$. Finally, we can write whole expression as:
+\begin{align}
+\bra{1_{\text{F12}}}\bar{H}_{N}\ket{0}
+=\bar{V}^{ij}_{ij}+\bar{V}^{ia}_{ij}t^{j}_{a}+\bar{V}^{aj}_{ij}t^{i}_{a}+\bar{C}^{ab}_{ij}t^{ij}_{ab}+\bar{V}^{ab}_{ij}t^{ij}_{ab}
+\end{align}  
+
+Last contribution form the energy expression to be resolved is:
+\begin{align}
+\bra{0}\hat{H}^{(1)}\ket{1_{\text{F12}}}=\bra{0}\bar{H}_{N}\ket{1_{\text{F12}}}+\bra{0}\hat{T}_{1}^{\dagger}\bar{H}_{N}\ket{1_{\text{F12}}}+\bra{0}\hat{T}_{2}^{\dagger}\bar{H}_{N}\ket{1_{\text{F12}}}
+\end{align}   
+
+Taking into consideration only terms that will be at most linear in amplitudes and GBC, this term will give same contributions as previous one.
+By defining intermediate $\mathcal{V}$ as:
+\begin{align}
+\mathcal{V}^{ij}_{ij}=\bar{V}^{ij}_{ij}+\bar{V}^{ia}_{ij}t^{j}_{a}+\bar{V}^{aj}_{ij}t^{i}_{a}+(\bar{V}^{ab}_{ij}+\bar{C}^{ab}_{ij})t^{ij}_{ab}
+\end{align}   
+
+then the energy contribution in spin-free formalism is defined as:
+\begin{align}
+E_{(2)_{\overline{\text{F12}}}}=2\mathcal{V}^{ij}_{ij}+\mathcal{B}^{ij}_{ij}
+\end{align}   
+
 
 
 \end{document}
